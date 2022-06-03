@@ -1,7 +1,11 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import client from "client";
+import { FaustProvider } from "new-faust";
+import type { AppProps } from "next/app";
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+export default function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <FaustProvider client={client} pageProps={pageProps}>
+      <Component {...pageProps} />
+    </FaustProvider>
+  );
 }
-export default MyApp
